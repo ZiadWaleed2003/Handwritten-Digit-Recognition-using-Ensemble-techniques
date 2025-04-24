@@ -29,14 +29,6 @@ def render_file_uploader():
     invert_colors = st.checkbox("Invert colors (if digit is black on white background)", value=False)
     return uploaded_file, invert_colors
 
-# def display_preprocessed_image(img_array):
-#     """Display the preprocessed image and preprocessing details."""
-#     st.subheader("Preprocessed Image (28x28 Grayscale)")
-#     fig, ax = plt.subplots()
-#     ax.imshow(img_array, cmap='gray')
-#     ax.axis('off')
-#     st.pyplot(fig)
-#     st.markdown(f"**Preprocessing Details:**<br>- Image shape after flattening: {img_array.flatten().shape}<br>- Pixel value range after normalization: {(img_array.min()/255.0):.2f} to {(img_array.max()/255.0):.2f}", unsafe_allow_html=True)
 
 def display_prediction(predicted_digit):
     """Display the predicted digit."""
@@ -84,7 +76,7 @@ def main():
         with col2:
             # Display preprocessed image and prediction
             img_array = np.array(Image.open(temp_image_path).convert('L'))
-            # display_preprocessed_image(img_array)
+
             display_prediction(predicted_digit)
     else:
         with col1:
